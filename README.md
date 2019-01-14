@@ -21,7 +21,7 @@ At least C++14 is required.
 
 For Ubuntu:
 ```shell
-sudo apt-get install -y libboost-dev libeigen3-dev libgeographic-dev libpugixml-dev libpython-dev libboost-python-dev libpython3-all-dev python3-pip python3-setuptools
+sudo apt-get install -y cmake libboost-all-dev libeigen3-dev libgeographic-dev libpugixml-dev libpython-dev libboost-python-dev libpython3-all-dev python3-pip python3-setuptools
 ```
 
 ### Installing
@@ -35,6 +35,26 @@ or
 ```
 
 ### Usage
+**Note:   
+Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**
+```python
+from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!
+```
+you will get errors:
+```
+# not supported!!!
+```
+
+You can use
+```python
+from lanelet2 import core
+# use core.AttributeMap
+# or
+from lanelet2.core import AttributeMap
+```
+instead.
+
+* examples
 ```python
 #!/usr/bin/env python
 import lanelet2
