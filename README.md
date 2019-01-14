@@ -37,9 +37,10 @@ or
 ### Usage
 ```python
 #!/usr/bin/env python
-from lanelet2 import core, io, projection, geometry, traffic_rules
+import lanelet2
+from lanelet2 import core, io, projection, geometry
 # or
-from lanelet2.core import AttributeMap, TrafficLight, Lanelet, LineString3d, Point2d, Point3d, getId, LaneletMap, BoundingBox2d, BasicPoint2d
+from lanelet2.core import Lanelet, LineString3d, Point2d, Point3d, getId, LaneletMap, BoundingBox2d, BasicPoint2d
 p = Point3d(getId(), 1, 100, 1000)
 print(p)
 assert p.x == 0
