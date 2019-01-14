@@ -1,7 +1,7 @@
 # lanelet2_standalone
 
 ## Overview
-This is a standalone lanelet2 **python3** package for the [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2) library, which **does not** require the ROS and catkin.
+This is a standalone lanelet2 **python3/python2** package for the [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2) library, which **does not** require the ROS and catkin.
 
 ## Installation
 pylanelet2 uses cmake and setuptools for building and packaging and is targeted towards Linux.
@@ -10,13 +10,13 @@ At least C++14 is required.
 
 ### Tested Configuration
 * `Ubuntu 16.04 LTS`
-* `python3.5`
+* `python3.5/python2.7`
 
 ### Dependencies
 * `Boost` (from 1.58, for lanelet2_io)
 * `eigen3`
 * `pugixml` (for lanelet2_io)
-* `boost-python/python3`
+* `boost-python2/python3`
 * `geographiclib` (for lanelet2_projection)
 
 For Ubuntu:
@@ -25,13 +25,22 @@ sudo apt-get install -y cmake libboost-all-dev libeigen3-dev libgeographic-dev l
 ```
 
 ### Installing
-In the repo root folder,
+* Building
+```bash
+git clone https://github.com/yuzhangbit/lanelet2_standalone.git
+cd lanelet2_standalone
+```
+* Install lanelet2 for system python3:
 ```shell
 sudo python3 setup.py install
 ```
-or
+* Or install lanelet2 for system python2:
 ```bash
-/path/to/your/python3 setup.py install
+sudo python setup.py install
+```
+* Or install lanelet2 for other python version:
+```
+/path/to/python setup.py install
 ```
 
 ## Usage
