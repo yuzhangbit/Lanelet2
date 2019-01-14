@@ -1,7 +1,7 @@
 # lanelet2_standalone
 
 ## Overview
-This is a standalone **lanelet2 python3 package** for the [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2) library, which does not require the ROS and catkin.
+This is a standalone lanelet2 **python3** package for the [Lanelet2](https://github.com/fzi-forschungszentrum-informatik/Lanelet2) library, which **does not** require the ROS and catkin.
 
 ## Installation
 pylanelet2 uses cmake and setuptools for building and is targeted towards Linux.
