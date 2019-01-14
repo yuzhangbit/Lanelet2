@@ -21,7 +21,7 @@ At least C++14 is required.
 
 For Ubuntu:
 ```shell
-sudo apt-get install libboost-dev libeigen3-dev libgeographic-dev libpugixml-dev libpython-dev libboost-python-dev libpython3-all-dev
+sudo apt-get install -y libboost-dev libeigen3-dev libgeographic-dev libpugixml-dev libpython-dev libboost-python-dev libpython3-all-dev python3-pip python3-setuptools
 ```
 
 ### Installing
