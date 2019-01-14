@@ -58,7 +58,7 @@ p.id = getId()
 ```
 
 **Note:   
-Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**
+Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**   
 If you do this,
 ```python
 from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!
