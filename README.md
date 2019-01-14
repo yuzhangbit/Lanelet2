@@ -10,7 +10,7 @@ At least C++14 is required.
 
 ### Tested Configuration
 * `Ubuntu 16.04 LTS`
-* `python3.5/python2.7`
+* `python2.7/python3.5`
 
 ### Dependencies
 * `Boost` (from 1.58, for lanelet2_io)
@@ -58,7 +58,7 @@ p.id = getId()
 ```
 
 **Note:   
-Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**   
+Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**     
 If you do this,
 ```python
 from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #! /usr/bin/env python
+=======
+#! /usr/bin/env python3
+>>>>>>> master
 from setuptools import setup, Extension
 from io import open
 import subprocess
@@ -25,18 +29,24 @@ class CMakeBuild(build_ext):
     def build_extension(self, ext):
         extdir = os.path.abspath(
             os.path.dirname(self.get_ext_fullpath(ext.name)))
+<<<<<<< HEAD
         # python version
         self.python_version = sys.version_info.major
+=======
+>>>>>>> master
         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
                       '-DPYTHON_EXECUTABLE=' + sys.executable]
 
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
         cmake_args += ['-DCMAKE_BUILD_TYPE=' + cfg]
+<<<<<<< HEAD
         if self.python_version == 3:
             cmake_args += ['-DUSE_PYTHON3=ON']
         else:
             cmake_args += ['-DUSE_PYTHON3=OFF']
+=======
+>>>>>>> master
         build_args += ['--', '-j4']
 
         env = os.environ.copy()
@@ -60,7 +70,10 @@ setup(name='lanelet2',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: autonomous driving',
         'Programming Language :: Python :: 3.5',
+<<<<<<< HEAD
         'Programming Language :: Python :: 2.7',
+=======
+>>>>>>> master
       ],
       license='BSD 3-Clause',
       packages=['lanelet2'],
