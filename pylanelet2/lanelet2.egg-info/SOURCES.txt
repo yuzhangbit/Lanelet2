@@ -1,7 +1,0 @@
-README.md
-setup.py
-pylanelet2/lanelet2.egg-info/PKG-INFO
-pylanelet2/lanelet2.egg-info/SOURCES.txt
-pylanelet2/lanelet2.egg-info/dependency_links.txt
-pylanelet2/lanelet2.egg-info/not-zip-safe
-pylanelet2/lanelet2.egg-info/top_level.txt
