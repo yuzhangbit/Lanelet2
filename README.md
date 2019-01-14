@@ -34,27 +34,8 @@ or
 /path/to/your/python3 setup.py install
 ```
 
-### Usage
-**Note:   
-Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**
-```python
-from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!
-```
-you will get errors:
-```
-# not supported!!!
-```
-
-You can use
-```python
-from lanelet2 import core
-# use core.AttributeMap
-# or
-from lanelet2.core import AttributeMap
-```
-instead.
-
-* examples
+## Usage
+### Example
 ```python
 #!/usr/bin/env python
 import lanelet2
@@ -66,3 +47,25 @@ print(p)
 assert p.x == 0
 p.id = getId()
 ```
+
+**Note:   
+Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**
+If you do this,
+```python
+from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!
+```
+you will get an error as below:
+```
+>>> from lanelet2.liblanelet2_core_pyapi import AttributeMap
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named 'lanelet2.liblanelet2_core_pyapi'
+```
+Instead, you can use
+```python
+from lanelet2 import core
+# use core.AttributeMap
+# or
+from lanelet2.core import AttributeMap
+```
+, which is more elegant.
