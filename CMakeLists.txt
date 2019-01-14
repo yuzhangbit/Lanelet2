@@ -3,6 +3,10 @@ project(lanelet2)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
+# by setting this, we don't need to install the generated c++ library to /usr/local
+# LINKED_LIBRARIES will be installed by side with the python api binding libraries
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(Boost REQUIRED COMPONENTS python-py35 serialization system filesystem)
@@ -42,8 +46,7 @@ foreach(SUBMODULE ${MODUELS})
       ${${SUBMODULE}_SRC}
     )
     target_include_directories(${LIBRARY_NAME}
-      PRIVATE
-          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_${SUBMODULE}/include/${PROJECT_NAME}_${SUBMODULE}>)
+      PRIVATE  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_${SUBMODULE}/include/${PROJECT_NAME}_${SUBMODULE}>)
     target_link_libraries(${LIBRARY_NAME}
       ${Boost_LIBRARIES}
       ${PYTHON_LIBRARY}
@@ -54,6 +57,7 @@ foreach(SUBMODULE ${MODUELS})
   endif()
 endforeach()
 
+
 # build each python api binding submodule
 foreach(SUBMODULE ${MODUELS})
    set(API_LIBRARY_NAME "${PROJECT_NAME}_${SUBMODULE}_pyapi")
@@ -61,6 +65,7 @@ foreach(SUBMODULE ${MODUELS})
      lanelet2_python/python_api/${SUBMODULE}.cpp  # binding codes
    )
    target_compile_definitions(${API_LIBRARY_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${API_LIBRARY_NAME})
+   #target_compile_options(${API_LIBRARY_NAME} PRIVATE -Wl,-rpath='$ORIGIN')
    target_link_libraries(${API_LIBRARY_NAME}
      ${Boost_LIBRARIES}
      ${PYTHON_LIBRARY}
