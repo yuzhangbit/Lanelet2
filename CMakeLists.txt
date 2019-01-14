@@ -43,7 +43,7 @@ foreach(SUBMODULE ${MODUELS})
     )
     target_include_directories(${LIBRARY_NAME}
       PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_${SUBMODULE}/include/${PROJECT_NAME}_${SUBMODULE}>)
+          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_${SUBMODULE}/include/${PROJECT_NAME}_${SUBMODULE}>)
     target_link_libraries(${LIBRARY_NAME}
       ${Boost_LIBRARIES}
       ${PYTHON_LIBRARY}
