@@ -2,4 +2,6 @@
 *.pyc
 setup.py
 CMakeLists.txt.user
-
+dist/
+build/
+lanelet2.egg-info/

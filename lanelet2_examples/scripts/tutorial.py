@@ -2,9 +2,10 @@
 import lanelet2
 import tempfile
 import os
-from lanelet2.liblanelet2_core_pyapi import AttributeMap, TrafficLight, Lanelet, LineString3d, Point2d, Point3d, getId, \
+from lanelet2.core import AttributeMap, TrafficLight, Lanelet, LineString3d, Point2d, Point3d, getId, \
     LaneletMap, BoundingBox2d, BasicPoint2d
 from lanelet2.projection import UtmProjector
+from lanelet2 import geometry
 
 example_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../lanelet2_maps/res/mapping_example.osm")
 
@@ -29,10 +30,10 @@ def part1primitives():
     p.id = getId()
     p.attributes["key"] = "value"
     assert "key" in p.attributes
-    assert p.attributes["key"] == "value"
+    assert p.attributes["key"] == "v"
 
     # the 2d/3d mechanics work too
-    p2d = lanelet2.geometry.to2D(p)
+    p2d = geometry.to2D(p)
 
     # all (common) geometry calculations are available as well:
     p2 = Point3d(getId(), 1, 0, 0)
