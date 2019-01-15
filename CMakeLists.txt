@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(lanelet2)
+include(GNUInstallDirs)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
@@ -46,6 +47,7 @@ foreach(SUBMODULE ${MODUELS})
       ${${SUBMODULE}_SRC}
     )
     target_include_directories(${LIBRARY_NAME}
+      PUBLIC   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
       PRIVATE  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_${SUBMODULE}/include/${PROJECT_NAME}_${SUBMODULE}>)
     target_link_libraries(${LIBRARY_NAME}
       ${Boost_LIBRARIES}
@@ -54,6 +56,11 @@ foreach(SUBMODULE ${MODUELS})
       ${PugiXML_LIBRARIES}
     )
     list(APPEND LINKED_LIBRARIES ${LIBRARY_NAME})
+    install(TARGETS ${LIBRARY_NAME}
+      ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+      LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+      RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(DIRECTORY ${PROJECT_NAME}_${SUBMODULE}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
   endif()
 endforeach()
 
