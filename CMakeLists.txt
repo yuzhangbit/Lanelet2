@@ -9,9 +9,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-find_package(Boost REQUIRED COMPONENTS python-py35 serialization system filesystem)
-find_package(PythonLibs 3.5 REQUIRED) # sets ${PYTHON_INCLUDE_DIRS}
+option(USE_PYTHON3 "Use python 3 to build libraries." ON)
+if (USE_PYTHON3)
+  find_package(Boost REQUIRED COMPONENTS python-py35 serialization system filesystem)
+  find_package(PythonLibs 3.5 REQUIRED) # sets ${PYTHON_INCLUDE_DIRS}
+else()
+  find_package(Boost REQUIRED COMPONENTS python serialization system filesystem)
+  find_package(PythonLibs 2.7 REQUIRED) # sets ${PYTHON_INCLUDE_DIRS}
+endif()
 find_package(Eigen3 QUIET)
 if(NOT EIGEN3_FOUND)
   find_package(PkgConfig REQUIRED)
@@ -72,7 +77,6 @@ foreach(SUBMODULE ${MODUELS})
      lanelet2_python/python_api/${SUBMODULE}.cpp  # binding codes
    )
    target_compile_definitions(${API_LIBRARY_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${API_LIBRARY_NAME})
-   #target_compile_options(${API_LIBRARY_NAME} PRIVATE -Wl,-rpath='$ORIGIN')
    target_link_libraries(${API_LIBRARY_NAME}
      ${Boost_LIBRARIES}
      ${PYTHON_LIBRARY}
