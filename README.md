@@ -64,7 +64,7 @@ from lanelet2 import core, io, projection, geometry, routing, traffic_rules
 from lanelet2.core import Lanelet, LineString3d, Point2d, Point3d, getId, LaneletMap, BoundingBox2d, BasicPoint2d
 p = Point3d(getId(), 1, 100, 1000)
 print(p)
-assert p.x == 0
+assert p.x == 1
 p.id = getId()
 ```
 
