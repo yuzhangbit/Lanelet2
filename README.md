@@ -53,6 +53,15 @@ sudo python setup.py install
 ```
 /path/to/python setup.py install
 ```
+* For whom wants to use the lanelet2 standalone c++ library **(optional)**, do
+```bash
+cd lanelet2_standalone
+mkdir -p build
+cd build
+cmake ..
+make -j$(nproc)
+sudo make install
+```
 
 ## Usage
 ### Example
@@ -68,8 +77,8 @@ assert p.x == 1
 p.id = getId()
 ```
 
-**Note:   
-Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**     
+**Note:
+Importing submodules from the raw `liblanelet2_core_pyapi.so` library like below is not supported.**
 If you do this,
 ```python
 from lanelet2.liblanelet2_core_pyapi import AttributeMap # not supported!!!
